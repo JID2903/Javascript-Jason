@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // Your JS goes here
+        function changeText() {
+            document.getElementById("myParagraph").innerHTML = "You have clicked the button!";
+            ("I enjoy playing 2k25");
+        }
+
+        function changeSecondText() {
+            document.getElementById("secondParagraph").innerHTML = "You changed the second paragraph!";
+        }
+
+        function turnOn() {
+            document.getElementById("myImage").src = "eiffel_tower.jpg";
+        }
+
+        function turnOff() {
+            document.getElementById("myImage").src = "Open-scenery.jpg";
+        }
+        window.onload = function() {
+            window.alert("I enjoy playing 2k25");
+        }
+        window.onload = function() {
+            console.log("I enjoy playing 2k25");
+        }
+    </script>
+</head>
+<body>
+    <h1>JavaScript is Cool</h1>
+    <p>Open the console to see more...</p>
+    <p id="myParagraph">Curry is the GOAT in Basketball.</p> 
+    <button onclick="changeText()">idk</button>
+    <p id="secondParagraph">LeBron is a legend in Basketball.</p>
+    <button onclick="changeSecondText()">Change Second Paragraph</button>
+    <button onclick="document.getElementById('myImage').src = '/eiffiel_tower.jpg'">Turn On</button>
+    <img id="myImage" src="/eiffiel_tower.jpg" alt="Eiffel Tower" style="width: 300px; height: 200px;">
+    <button onclick="turnOff()">Turn Off</button>
+</body>
+</html> 

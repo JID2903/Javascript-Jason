@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fun with Cats!</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f9f6f2;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #ffb347;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        main {
+            max-width: 700px;
+            margin: 30px auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+        h2 {
+            color: #ffb347;
+        }
+        #catImg {
+            display: block;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            width: 300px;
+            transition: box-shadow 0.3s, border 0.3s;
+        }
+        #userName {
+            color: #ffb347;
+            font-weight: bold;
+        }
+        .btn {
+            background: #ffb347;
+            color: #fff;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 8px 0;
+            font-size: 1em;
+            transition: pulse 0.2s;
+        }
+        .btn:hover {
+            background: #ffa500;
+        }
+        #factBox {
+            background: #fffbe7;
+            border-left: 5px solid #ffb347;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        #tutorialDemo {
+            margin-top: 30px;
+            padding: 15px;
+            background: #e0f7fa;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Fun with Cats!</h1>
+        <p>Learn cool facts, see cute cats, and interact with JavaScript!</p>
+    </header>
+    <main>
+        <h2>Welcome, <span id="userName">Cat Lover</span>!</h2>
+        <button class="btn" onclick="askName()">What's your name?</button>
+        
+        <div id="factBox">
+            <h3>Cat Fact</h3>
+            <p id="catFact">Did you know? Cats sleep for 70% of their lives!</p>
+            <button class="btn" onclick="changeFact()">Show Another Fact</button>
+        </div>
+
+        <img id="catImg" src="cat-1.jpg" alt="Cute Cat">
+        <button class="btn" onclick="changeCatImage()">Change Cat Image</button>
+        
+        <div id="tutorialDemo">
+            <h3>Cat Counter (Tutorial Demo)</h3>
+            <p>How many cats do you want?</p>
+            <input type="number" id="catCount" min="1" max="8" value="1">
+            <button class="btn" onclick="showCats()">Show Cats</button>
+            <div id="catsDisplay" style="margin-top:10px;"></div>
+            <p style="font-size:0.9em;color:#888;">
+                <em>Based on <a href="https://www.w3schools.com/js/js_loop_for.asp" target="_blank">this W3Schools JavaScript for loop tutorial</a></em>
+            </p>
+            <p>
+                <strong>How it works:</strong> This code uses a <code>for</code> loop to display as many cat images as you enter in the box above.
+            </p>
+        </div>
+    </main>
+    <script>
+        // --- JavaScript Functions ---
+
+        // 1. Function to ask user's name using prompt() and display it
+        function askName() {
+            let name = prompt("What's your name?");
+            if (name && name.trim() !== "") {
+                document.getElementById("userName").textContent = name;
+                // Change multiple CSS properties
+                let userNameElem = document.getElementById("userName");
+                userNameElem.style.color = "#e67e22";
+                userNameElem.style.fontSize = "1.5em";
+                userNameElem.style.textShadow = "1px 1px 2px #ffebcd";
+            }
+        }
+
+        // 2. Function to change the cat fact
+        function changeFact() {
+            const facts = [
+                "Cats have five toes on their front paws, but only four on the back.",
+                "A group of cats is called a clowder.",
+                "Cats can rotate their ears 180 degrees.",
+                "The oldest cat ever lived to be 38 years old.",
+                "Cats have over 20 muscles that control their ears.",
+                "A cat can jump up to six times its length.",
+                "Cats sweat through their paws.",
+                "A cat’s nose is as unique as a human’s fingerprint."
+            ];
+            let randomIndex = Math.floor(Math.random() * facts.length);
+            document.getElementById("catFact").textContent = facts[randomIndex];
+        }
+
+        // 3. Function to change the cat image and log to console
+        function changeCatImage() {
+            const catImages = [
+                "cat-1.jpg",
+                "cat-2.jpg",
+                "cat-3.jpg",
+                "cat-4.jpg",
+                "cat-5.jpg",
+                "cat-6.jpg",
+                "cat-8.jpg",
+            ];
+            let imgElem = document.getElementById("catImg");
+            let currentSrc = imgElem.src;
+            let newSrc;
+            do {
+                newSrc = catImages[Math.floor(Math.random() * catImages.length)];
+            } while (currentSrc.endsWith(newSrc.split('/').pop())); // avoid same image
+            imgElem.src = newSrc;
+            // Change multiple CSS properties
+            imgElem.style.boxShadow = "0 4px 16px rgba(255,179,71,0.4)";
+            imgElem.style.border = "3px solid #ffb347";
+            // Log to console
+            console.log("Cat image changed to: " + newSrc);
+        }
+        window.onload = function() {
+            console.log("Welcome to the Cat Lover's page!");
+            // Show an alert when the page loads
+            window.alert("Welcome to the Cat Lover's page!");
+            console.log("Cat image changed to: " + newSrc);
+        }
+
+        // --- Tutorial Demo: Cat Counter ---
+        // Based on https://www.w3schools.com/js/js_loop_for.asp
+        // This function uses a for loop to display multiple cat images
+        function showCats() {
+            let count = parseInt(document.getElementById("catCount").value);
+            let display = document.getElementById("catsDisplay");
+            display.innerHTML = "";
+            for (let i = 0; i < count; i++) {
+                let img = document.createElement("img");
+                img.src = "cat-7.jpg";
+                img.alt = "Small Cat";
+                img.style.margin = "3px";
+                img.style.borderRadius = "6px";
+                img.style.width = "80px";
+                img.style.height = "80px";
+                display.appendChild(img);
+            }
+        }
+        // Explanation:
+        // The showCats() function gets the number from the input box,
+        // then uses a for loop to create that many <img> elements and adds them to the page.
+    </script>
+</body>
+</html></p>
