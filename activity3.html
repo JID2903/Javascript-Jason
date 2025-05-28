@@ -17,12 +17,12 @@
         let favoriteActivity = prompt("Enter your favorite activity:");
         let favoriteSeason = prompt("Enter your favorite season:");
         let sentence = `Once upon a time, ${userName} had a ${favoriteAnimal} that was ${favoriteColor}. They loved to eat ${favoriteFood} and play in ${favoritePlace}. Every ${favoriteSeason}, they would go on adventures and enjoy ${favoriteActivity}.`;
-        document.write(`<h2>Story for ${userName}</h2>`);
-        document.write(`<p>${sentence}</p>`);
         let sentence2 = `One day, ${userName} decided to take their ${favoriteAnimal} to the ${favoritePlace}. They wore a ${favoriteColor} outfit and packed some ${favoriteFood} for the trip. They had so much fun ${favoriteActivity} that they forgot all about time. It was the best ${favoriteSeason} ever!`;
-        document.write(`<h2>Another Story for ${userName}</h2>`);
-        document.write(`<p>${sentence2}</p>`);
-        window.alert("Thank you for participating, " + userName + "! Your stories have been generated.");
+        let story = sentence + " " + sentence2;
+        window.alert(story);
+        document.write(story);
+        // Jaivir thought this was a fun activity and wanted to share it with his friends.
+        // Aayan thought it was a great way to practice storytelling and creativity.
     </script>
 </body>
 </html>
